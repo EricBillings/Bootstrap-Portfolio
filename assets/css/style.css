@@ -55,21 +55,23 @@ footer      {
 
 /* About Me */
 
-#EB {S
-    width: 160px;
-    height: 145px;
+.jumbotron  {
+    height: 100px;
+    margin: 0 10px -20px 10px;
+    padding-top: 40px;
+    background: whitesmoke;
+}
+
+#EB {
     border-radius: 10px;
-    float: left;
-    margin: 10px 10px 0 10px;
 
 }
 
-
-.aboutText      {
-    margin: 20px 10px 0 10px;
+p  {
     text-align: justify;
 
 }
+
 
 
 
@@ -97,35 +99,11 @@ h6  {
 
 
 
-
 @media screen and (max-width: 640px) {
 
-    .container  {
-        padding: 0;
-        margin: 2px 0 70px 0;
 
-    }
+   
+
   
-    .container-inside {
-    widith 100%;
-    padding: 0;
-    margin: 0;
-
- 
-   }
-
-    img {
-    display: none;
-
-    }
-
-    form    {
-        width: 100%;
-        margin: 2px;
-        padding: 0;
-
-
-    }
-
 
 }
