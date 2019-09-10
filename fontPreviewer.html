@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <title>FONT TEST</title>
+</head>
+
+<body>
+
+    <form>
+        <div class="form-group">
+            <label for="phrase">Text:</label>
+            <textarea class="form-control" id="phrase" rows="1"></textarea>
+        </div>
+        <button type="submit" id="preview" style="margin: 15px;">Preview Font</button>
+    </form>
+    <div id="previewArea" class="display-center" style="text-align: center"> </div>
+    <hr>
+    <div id="options"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <script>
+        const families = ['Tangerine', 'Akronim', 'Luckiest Guy', 'Lobster', 'Wire One', 'Allura', 'Amatic SC', 'Baloo Bhaijaan', 'Bokor', 'Butterfly Kids', 'Calligraffitti', 'Caveat', 'Chilanka', 'Kristi', 'Lemonada', 'Londrina Shadow', 'Noto Sans SC', 'Shadows Into Light', 'Shadows Into Light Two', 'Snowburst One', 'Tajawal', 'Tangerine', 'ZCOOL KuaiLe', 'ZCOOL QingKe HuangYou', 'Righteous', 'Cinzel', 'Orbitron', 'Knewave', 'Michroma', 'Reenie Beanie', 'Bungee Inline', 'Beth Ellen'];
+
+        WebFont.load({
+            google: {
+                families
+            }
+        });
+
+
+        $(document).ready(function() {
+
+            let view = 0;
+            $("#preview").on("click", function(event) {
+                $("#previewArea").empty();
+                let text = $("#phrase").val();
+                const previewDiv = `<div id="previewDiv" style="font-size: 36px">${text}</div>`
+                $("#previewArea").append(previewDiv);
+
+                if (view === 0) {
+                    event.preventDefault();
+                    $(".fontClass").show();
+                    view = 1;
+                } else {
+                    event.preventDefault();
+                    $(".fontClass").hide();
+                    view = 0;
+                }
+
+            })
+
+
+
+            for (let i = 0; i < families.length; i++) {
+                const family = families[i].replace(/\s/g, "");
+
+                const newDiv = `<button hidden class="${family} fontClass" id="dropDiv" value="${families[i]}" style="margin:5px; font-family:${families[i]}; font-size:18px" id=${family}>${families[i]}</button>`;
+                $("#options").append(newDiv);
+            }
+
+            $(".fontClass").on("click", function() {
+
+                let fontFamily = $(this).css("font-family");
+
+                $("#previewDiv").css("font-family", fontFamily);
+            });
+
+
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
